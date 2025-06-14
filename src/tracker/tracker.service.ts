@@ -27,4 +27,21 @@ export class TrackerService {
     });
   }
 
+  async getById(id: number) {
+    const trx = await prisma.transaction.findUnique({
+      where: { id },
+    });
+
+    if (!trx) throw new Error('Transaksi tidak ditemukan');
+
+    return trx;
+  }
+
+  async delete(id: number) {
+    const trx = await prisma.transaction.findUnique({ where: { id } });
+    if (!trx) throw new Error('Transaksi tidak ditemukan');
+
+    await prisma.transaction.delete({ where: { id } });
+    return { message: 'Transaksi berhasil dihapus' };
+  }
 }

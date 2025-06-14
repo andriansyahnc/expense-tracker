@@ -1,9 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { TrackerService } from './tracker.service';
 
 @Controller('track')
 export class TrackerController {
-  constructor(private readonly trackerService: TrackerService) { }
+  constructor(private readonly trackerService: TrackerService) {}
 
   @Post()
   async postCommand(@Body('command') command: string) {
@@ -17,5 +17,15 @@ export class TrackerController {
   @Get()
   async getAll() {
     return this.trackerService.getAll();
+  }
+
+  @Get(':id')
+  async getById(@Param('id') id: string) {
+    return this.trackerService.getById(Number(id));
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return this.trackerService.delete(Number(id));
   }
 }
