@@ -1,9 +1,9 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TrackerService } from './tracker.service';
 
 @Controller('track')
 export class TrackerController {
-  constructor(private readonly trackerService: TrackerService) {}
+  constructor(private readonly trackerService: TrackerService) { }
 
   @Post()
   async postCommand(@Body('command') command: string) {
@@ -12,5 +12,10 @@ export class TrackerController {
       message: 'Command diproses',
       result,
     };
+  }
+
+  @Get()
+  async getAll() {
+    return this.trackerService.getAll();
   }
 }

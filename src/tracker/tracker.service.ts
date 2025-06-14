@@ -18,4 +18,13 @@ export class TrackerService {
       },
     });
   }
+
+  async getAll() {
+    return prisma.transaction.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
+
 }
