@@ -1,0 +1,24 @@
+{
+  "name": "expense-tracker-nest",
+  "version": "0.0.1",
+  "description": "Personal expense tracker via chat",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "prisma": "^5.0.0",
+    "@prisma/client": "^5.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}

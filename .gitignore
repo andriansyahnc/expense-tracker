@@ -21,3 +21,6 @@ logs
 # IDE
 .vscode
 .idea
+
+*.db
+*.db*
