@@ -11,6 +11,7 @@ model User {
   id        String   @id @default(uuid())
   name      String
   createdAt DateTime @default(now())
+  debts     Debt[]   // ← Tambahan ini buat relasi balik
 }
 
 model Transaction {
@@ -19,4 +20,17 @@ model Transaction {
   amount    Int
   note      String?
   createdAt DateTime @default(now())
+}
+
+model Debt {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  type        String   // 'UTANG' | 'PIUTANG'
+  name        String   // Nama pihak lawan transaksi (opsional)
+  total       Int
+  paid        Int      @default(0)
+  note        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
