@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
-import { parseCommand } from '../parser/command-parser';
+import { parseCommand } from '../parser/command-parser.js';
 
 const prisma = new PrismaClient();
 
